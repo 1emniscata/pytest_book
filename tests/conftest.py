@@ -53,3 +53,18 @@ def db_with_3_tasks(tasks_db, tasks_just_a_few):
 def db_with_milt_per_owner(tasks_db, tasks_mult_per_owner):
     for t in tasks_mult_per_owner:
         tasks.add(t)
+
+
+def pytest_report_header():
+    return "Thanks for running the tests."
+
+
+def pytest_report_teststatus(report):
+    if report.when == "call" and report.failed:
+        return (report.outcome, "0", "OPPORTUNITY for improvement")
+
+
+def pytest_addoption(parser):
+    group = parser.getgroup("nice")
+    group.addoption("--nice", action="store_true",
+                    help="nice: turn failures into opportunities")

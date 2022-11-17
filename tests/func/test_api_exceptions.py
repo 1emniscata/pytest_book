@@ -1,6 +1,20 @@
 import pytest
 import src.tasks as tasks
+from src.tasks import Task
+
+
 # from pyt import
+
+class TestAdd():
+    def test_missing_summary(self, tasks_db):
+        with pytest.raises(ValueError):
+            tasks.add(Task(owner="Bob"))
+    @pytest.mark.xfail
+    def test_done_not_bool(self, tasks_db):
+        with pytest.raises(ValueError):
+            tasks.add(Task(summary="summary", done="True"))
+
+
 
 
 def test_add_raises():
