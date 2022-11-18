@@ -1,10 +1,13 @@
 from collections import namedtuple
+
+import pytest
+
 # from tasks import TasksException
 from src.tasks import Task
 # Task = namedtuple("Task", ["summary", "owner", "done", "id"])
 # Task.__new__.__defaults__ = (None, None, False, None)
 
-
+@pytest.mark.xfail
 def test_task_equality():
     t1 = Task("sit there", "Brian")
     t2 = Task("do smth", "Okken")

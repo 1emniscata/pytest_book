@@ -11,7 +11,7 @@ testdata = [
     (1e25, 1e24, 1.1e25)
 ]
 
-
+@pytest.mark.xfail(reason="One tuple contains deliberate error date")
 @pytest.mark.parametrize("x,y,expected", testdata)
 def test_a(x, y, expected):
     """Demo approx()."""
